@@ -33,13 +33,11 @@ namespace _05Services_Interfaces.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Article>> GetArticleById(int id)
         {
-            var article = GetArticle(id);
-
-            if (id == null)
+            var article = _articleService.Get(id);
+            if (article == null)
             {
-                return NotFound("Id cannot find");
+                return NotFound();
             }
-
             return Ok(article);
         }
 
