@@ -1,4 +1,6 @@
 using _05Services_Interfaces.Data;
+using _05Services_Interfaces.Services;
+using _05Services_Interfaces.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ArticleDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("CodeFirstConnection"))
 );
+
+builder.Services.AddScoped<IArticleService, ArticleService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

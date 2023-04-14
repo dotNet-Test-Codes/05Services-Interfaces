@@ -1,6 +1,7 @@
 ﻿using _05Services_Interfaces.Data;
 using _05Services_Interfaces.Models;
-using Microsoft.AspNetCore.Http;
+using _05Services_Interfaces.Services;
+using _05Services_Interfaces.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +12,10 @@ namespace _05Services_Interfaces.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly ArticleDBContext _context;
-        public ArticleController(ArticleDBContext context)
+        private readonly IArticleService _articleService;
+        public ArticleController(IArticleService articleService, ArticleDBContext context)
         {
+            _articleService = articleService;
             _context = context;
         }
 
