@@ -44,10 +44,12 @@ namespace _05Services_Interfaces.Controllers
         [HttpPost]
         public async Task<IActionResult> AddArticles(Article article)
         {
-            await _context.Articles.AddAsync(article);
-            await _context.SaveChangesAsync();
-
-            return Ok(article);
+            var art = _articleService.Create(article);
+            if(art == null)
+            {
+                return BadRequest();
+            }
+            return Ok(art);
         }
 
         [HttpPut("{id:int}")]

@@ -14,7 +14,18 @@ namespace _05Services_Interfaces.Services
 
         public Article Create(Article article)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Articles.AddAsync(article);
+                this.Save();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            var art = _context.Articles.OrderByDescending(n => n.ID).FirstOrDefault();
+
+            return art;
         }
 
         public Article Delete(Article article)
@@ -37,7 +48,7 @@ namespace _05Services_Interfaces.Services
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChangesAsync();
         }
 
         private Article GetByID(int id) => _context.Articles.Where(a => a.ID == id).FirstOrDefault();

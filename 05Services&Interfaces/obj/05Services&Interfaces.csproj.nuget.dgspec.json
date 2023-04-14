@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "SqlMapper.Core": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

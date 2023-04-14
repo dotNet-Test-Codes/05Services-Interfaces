@@ -74,3 +74,6 @@ F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\D
 F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\MicroReflection.Core.dll
+F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\SqlMapper.Common.Core.dll
+F:\Proj\.NET\dotNet Test Codes\05Services&Interfaces\05Services&Interfaces\bin\Debug\net7.0\SqlMapper.Core.dll
