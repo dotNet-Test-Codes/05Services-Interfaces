@@ -8,7 +8,7 @@ namespace _05Services_Interfaces.Services.Interfaces
         Article Get(int id);
         Article Create(Article article);
         Article Update(Article article);
-        Article Delete(Article article);
+        Article Delete(int id);
         void Save();
     }
 }

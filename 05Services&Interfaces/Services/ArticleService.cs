@@ -12,6 +12,14 @@ namespace _05Services_Interfaces.Services
             _context = context;
         }
 
+        public List<Article> GetAll()
+        {
+            var articles = _context.Articles.ToList();
+            return articles;
+        }
+
+        public Article Get(int id) => this.GetByID(id);
+
         public Article Create(Article article)
         {
             try
@@ -28,22 +36,50 @@ namespace _05Services_Interfaces.Services
             return art;
         }
 
-        public Article Delete(Article article)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Article Get(int id) => this.GetByID(id);
-
-        public List<Article> GetAll()
-        {
-            var articles = _context.Articles.ToList();
-            return articles;
-        }
-
         public Article Update(Article article)
         {
-            throw new NotImplementedException();
+            var art = this.GetByID(article.ID);
+
+            if (art != null)
+            {
+                try
+                {
+                    art.Name = article.Name;
+                    this.Save();                    
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                return art;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        public Article Delete(int id)
+        {
+            var art = this.GetByID(id);
+            if (art != null)
+            {
+                try
+                {
+                    _context.Articles.Remove(art);
+                    this.Save();
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+                return art;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void Save()

@@ -11,12 +11,10 @@ namespace _05Services_Interfaces.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly ArticleDBContext _context;
         private readonly IArticleService _articleService;
-        public ArticleController(IArticleService articleService, ArticleDBContext context)
+        public ArticleController(IArticleService articleService)
         {
             _articleService = articleService;
-            _context = context;
         }
 
         [HttpGet]
@@ -55,41 +53,24 @@ namespace _05Services_Interfaces.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateArticles(Article article)
         {
-            var art = this.GetArticle(article.ID);
-            if (art != null)
-            {
-                art.ID = article.ID;
-                art.Name = article.Name;
-                await _context.SaveChangesAsync();
-            }
-            else
+            var art = _articleService.Update(article);
+            if (art == null)
             {
                 return NotFound();
             }
+            
             return Ok(art);
         }
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteArticles(int id)
         {
-            var art = await _context.Articles.Where(a => a.ID == id).FirstOrDefaultAsync();
-            if (art != null)
-            {
-                _context.Articles.Remove(art);
-                await _context.SaveChangesAsync();
-            }
-            else
+            var art = _articleService.Delete(id);
+            if (art == null)
             {
                 return NotFound();
             }
             return Ok(art);
-        }
-
-        private Article GetArticle(int id)
-        {
-            var article = _context.Articles.Where(a => a.ID == id).FirstOrDefault();
-
-            return article;
         }
     }
 }
