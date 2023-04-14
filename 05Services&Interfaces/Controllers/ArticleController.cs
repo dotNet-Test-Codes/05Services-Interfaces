@@ -22,7 +22,12 @@ namespace _05Services_Interfaces.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Article>>> GetArticles()
         {
-            return Ok(await _context.Articles.ToListAsync());
+            var articles = _articleService.GetAll();
+            if(articles == null)
+            {
+                return NotFound();
+            }
+            return Ok(articles);
         }
 
         [HttpGet("{id:int}")]

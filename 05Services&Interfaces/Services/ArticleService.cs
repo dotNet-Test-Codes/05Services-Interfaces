@@ -13,7 +13,8 @@ namespace _05Services_Interfaces.Services
         }
         public List<Article> GetAll()
         {
-            throw new NotImplementedException();
+            var articles = _context.Articles.ToList();
+            return articles;
         }
     }
 }
